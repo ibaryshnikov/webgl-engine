@@ -6,7 +6,7 @@ It also can give some insights about the performance
 ## Building
 
 ```bash
-wasm-pack target --web
+wasm-pack build --target web
 ```
 
 ## Running
