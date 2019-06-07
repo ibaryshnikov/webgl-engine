@@ -1,0 +1,35 @@
+[package]
+name = "webgl-engine"
+version = "0.1.0"
+authors = ["ibaryshnikov"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+js-sys = "0.3.22"
+nalgebra = "0.18.0"
+typenum = "1.10.0"
+wasm-bindgen = "0.2.45"
+
+[dependencies.web-sys]
+version = "0.3.22"
+features = [
+    "CssStyleDeclaration",
+    "Document",
+    "DomRect",
+    "DomRectReadOnly",
+    "Element",
+    "EventTarget",
+    "HtmlElement",
+    "HtmlCanvasElement",
+    "MouseEvent",
+    "Node",
+    "WebGlBuffer",
+    "WebGlProgram",
+    "WebGlRenderingContext",
+    "WebGlShader",
+    "WebGlUniformLocation",
+    "Window",
+]
