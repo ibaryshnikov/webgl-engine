@@ -134,7 +134,7 @@ impl RenderingContext {
     ) -> Result<WebGlUniformLocation, Error> {
         self.gl
             .get_uniform_location(program, name)
-            .ok_or_else(|| Error::new(&format!("Can't get uniform location for {}", name)))
+            .ok_or_else(|| Error::new(&format!("Can't get uniform location for {name}")))
     }
 
     pub fn use_program(&self, program: &WebGlProgram) {

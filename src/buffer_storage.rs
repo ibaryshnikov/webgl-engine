@@ -4,7 +4,7 @@ use js_sys::{Error, Float32Array, Uint16Array, WebAssembly};
 use wasm_bindgen::{JsCast, JsValue};
 use web_sys::{WebGlBuffer, WebGlRenderingContext};
 
-use crate::rendering_context::{get_buffer_type, BufferKind, RenderingContext};
+use crate::rendering_context::{BufferKind, RenderingContext, get_buffer_type};
 
 pub struct BufferStorage<T: Display + Sized> {
     kind: BufferKind,
@@ -45,7 +45,7 @@ impl<T: Display + Sized> BufferStorage<T> {
     pub fn write_to_graphics_card(&self, ctx: &RenderingContext) -> Result<(), Error> {
         let typed_array = self.get_typed_array()?;
 
-        self.bind(&ctx);
+        self.bind(ctx);
         let buffer_type = get_buffer_type(self.kind);
         ctx.gl.buffer_data_with_array_buffer_view(
             buffer_type,

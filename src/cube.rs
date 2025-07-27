@@ -155,18 +155,18 @@ fn get_one_cube_geometry(ctx: &RenderingContext, position: Position) -> Result<C
     let colors = get_colors();
 
     let vertices_buffer =
-        BufferStorage::new(&ctx, BufferKind::ArrayBuffer, geometry.vertices.clone())?;
-    vertices_buffer.write_to_graphics_card(&ctx)?;
+        BufferStorage::new(ctx, BufferKind::ArrayBuffer, geometry.vertices.clone())?;
+    vertices_buffer.write_to_graphics_card(ctx)?;
 
-    let colors_buffer = BufferStorage::new(&ctx, BufferKind::ArrayBuffer, colors.clone())?;
-    colors_buffer.write_to_graphics_card(&ctx)?;
+    let colors_buffer = BufferStorage::new(ctx, BufferKind::ArrayBuffer, colors.clone())?;
+    colors_buffer.write_to_graphics_card(ctx)?;
 
     let indices_buffer = BufferStorage::new(
-        &ctx,
+        ctx,
         BufferKind::ElementArrayBuffer,
         geometry.indices.clone(),
     )?;
-    indices_buffer.write_to_graphics_card(&ctx)?;
+    indices_buffer.write_to_graphics_card(ctx)?;
 
     let projection = Perspective3::from_matrix_unchecked(Matrix4::zeros());
     let model_view = Isometry3::identity();
@@ -213,8 +213,8 @@ pub fn get_geometries(ctx: &RenderingContext) -> Result<Vec<Cube>, JsValue> {
     }
 
     let mut results = vec![];
-    for Position { x, y, z } in positions.iter() {
-        results.push(get_one_cube_geometry(ctx, Position::new(*x, *y, *z))?);
+    for Position { x, y, z } in positions.into_iter() {
+        results.push(get_one_cube_geometry(ctx, Position::new(x, y, z))?);
     }
 
     Ok(results)

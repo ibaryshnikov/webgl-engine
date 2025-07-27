@@ -6,7 +6,7 @@ use js_sys::Date;
 use wasm_bindgen::prelude::*;
 use web_sys::{HtmlCanvasElement, WebGlRenderingContext};
 
-use crate::cube::{get_geometries, Cube};
+use crate::cube::{Cube, get_geometries};
 use crate::dom_helpers::*;
 use crate::program::Program;
 use crate::rendering_context::RenderingContext;
