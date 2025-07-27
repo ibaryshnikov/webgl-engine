@@ -1,4 +1,4 @@
 /.idea
 /pkg
 /target
-Cargo.toml
+Cargo.lock
